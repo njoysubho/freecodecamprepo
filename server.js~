@@ -2,7 +2,7 @@ var express = require('express')
 var moment = require('moment')
 var app = express()
 
-app.get('/:datestring', function (req, res) {
+app.get('/', function (req, res) {
  
  var myDate;
   if(/^\d{8,}$/.test(req.params.datestring)) {
@@ -15,14 +15,13 @@ if (myDate.isValid()) {
       unix: myDate.format("X"),
       natural: myDate.format("MMMM D, YYYY")
 });
-
 }else {
 res.json({
       unix:null,
       natural: null
 });
 }
-} )
+ )
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
